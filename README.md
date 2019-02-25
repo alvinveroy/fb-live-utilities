@@ -18,10 +18,10 @@
 #### Deployable through Heroku
 
 ### Modules
--- DB Modules - CRUD API for Firebase
--- FB Modules - Grab Profile Picture, Store UID and Name, Store Live Stream ID, Store User Access Key
--- Browser Modules - Spawn new window for the realtime comments, questions and winner.
--- Timer Module - Set the timeout of a question and randomize the winner.
+- DB Modules - CRUD API for Firebase
+- FB Modules - Grab Profile Picture, Store UID and Name, Store Live Stream ID, Store User Access Key
+- Browser Modules - Spawn new window for the realtime comments, questions and winner.
+- Timer Module - Set the timeout of a question and randomize the winner.
 
 ## Features
 > 1 - Setup -> Enter FB Access Token
