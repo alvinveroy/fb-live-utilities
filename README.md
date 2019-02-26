@@ -32,9 +32,13 @@
 
 # Installation
 1. First Go to [Firebase Console](https://console.firebase.google.com/) and Create New Project.
+![alt text](https://github.com/alvinveroy/fb-live-utilities/blob/master/images/firebase-create-project.png "Create Project")
 2. After Creating the project, in project click on settings icon besides project Name in left sidebar and select Permissions.
+![alt text](https://github.com/alvinveroy/fb-live-utilities/blob/master/images/firebase-permission.png "Select permission")
 3. On Permissions Page Click on Service accounts in left sidebar then click on Generate new private key.
+![alt text](https://github.com/alvinveroy/fb-live-utilities/blob/master/images/firebase-generate-private-key.png "Generate new private key")
 4. In the popup window click on the button "Generate Key" and it will start downloading your credentials in json format save the file inside your project directory.
+![alt text](https://github.com/alvinveroy/fb-live-utilities/blob/master/images/firebase-generate-key-2.png "Download the credentials")
 5. Create a file named index.js and copy following code in your project directory.
 
 ```
