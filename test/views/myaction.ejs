@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <script>
+        var source = new EventSource("https://streaming-graph.facebook.com/<%= vid %>/live_comments?access_token=<%= uac %>&comment_rate=one_per_two_seconds&fields=from{name,id},message");
+        source.onmessage = function (e) {
+            var event = JSON.parse(e.data);
+            var profilePicture = 'https://graph.facebook.com/' + event.from.id +'/picture?type=square';
+            document.body.innerHTML += '<p><img src="'+ profilePicture +'"> '+ event.from.name + ' ' + event.message +'</p><br>';
+        };
+    </script>
+</body>
+
+</html>
