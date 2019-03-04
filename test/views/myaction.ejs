@@ -1,19 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html class="gr__127_0_0_1">
 
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+    <link rel="stylesheet" href="css/chat.css" />
 </head>
+                        <script>
+                            var source = new EventSource("https://streaming-graph.facebook.com/<%= vid %>/live_comments?access_token=<%= uac %>&comment_rate=one_per_two_seconds&fields=from{name,id},message");
+                            source.onmessage = function (e) {
+                                console.log(e);
+                                var event = JSON.parse(e.data);
+                                var profilePicture = 'https://graph.facebook.com/' + event.from.id + '/picture?type=square';
+                                document.getElementById("messages").innerHTML += '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="' + profilePicture + '" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + event.message + '</div></div>';
+                                window.setInterval(function () {
+                                    var elem = document.getElementById('messages');
+                                    elem.scrollTop = elem.scrollHeight;
+                                }, 5000);
+                            };
+                        </script>
 
-<body>
-    <script>
-        var source = new EventSource("https://streaming-graph.facebook.com/<%= vid %>/live_comments?access_token=<%= uac %>&comment_rate=one_per_two_seconds&fields=from{name,id},message");
-        source.onmessage = function (e) {
-            var event = JSON.parse(e.data);
-            var profilePicture = 'https://graph.facebook.com/' + event.from.id +'/picture?type=square';
-            document.body.innerHTML += '<p><img src="'+ profilePicture +'"> '+ event.from.name + ' ' + event.message +'</p><br>';
-        };
-    </script>
+<body data-gr-c-s-loaded="true">
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center h-100">
+            <div class="col-md-12 col-xl-6 chat">
+                    <div class="card">
+                    <div class="card-body msg_card_body" id="messages">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
